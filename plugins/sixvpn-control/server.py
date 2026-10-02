@@ -228,7 +228,7 @@ def _dispatch(message: dict[str, Any]) -> dict[str, Any] | None:
             "result": {
                 "protocolVersion": message.get("params", {}).get("protocolVersion", "2025-03-26"),
                 "capabilities": {"tools": {}},
-                "serverInfo": {"name": "sixvpn-local-control", "version": "1.0.0"},
+                "serverInfo": {"name": "sixvpn-local-control", "version": "1.1.0"},
                 "instructions": "6VPN 상태/일정 조회는 읽기 도구를 사용하세요. 웹 일정은 미리보기 뒤 별도 사용자 메시지로 명시적 적용을 요청받아야 저장합니다. 게임 및 앱 차단은 정확한 앱 이름과 .exe를 확인하고 전용 미리보기를 먼저 보여 주세요. 미리보기와 적용을 같은 턴에 연속 호출하지 마세요. 보호 기능을 자동으로 켜지 말고 브라우저 종료, 컴퓨터 잠금, 삭제, 합치기, 임시 허용, 셸 명령을 하지 마세요.",
             },
         }
