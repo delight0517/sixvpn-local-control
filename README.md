@@ -1,4 +1,4 @@
-# 6VPN Local Control 1.1.0 for ChatGPT Desktop and Claude Desktop
+# 6VPN Local Control 1.2.0 for ChatGPT Desktop, Claude Desktop, and Antigravity
 
 A local-only MCP connector for controlling the 6VPN app on the same Windows PC. It can read app status and schedules, preview a website schedule, and preview/apply an exact Windows app block after a separate explicit confirmation.
 
@@ -7,7 +7,7 @@ A local-only MCP connector for controlling the 6VPN app on the same Windows PC. 
 - Windows 10/11
 - Python 3.10 or newer on PATH (`python.exe`)
 - 6VPN installed and running on this PC
-- ChatGPT Desktop or Claude Desktop
+- ChatGPT Desktop, Claude Desktop, or Google Antigravity
 
 The connector talks only to 6VPN over `127.0.0.1`. It does not expose a cloud service or send your local authentication token to this repository. It never starts 6VPN or enables protection automatically. Browser executables and critical Windows processes are rejected. App-block schedules can close the named app while active; inspect the preview before asking it to apply.
 
@@ -24,6 +24,20 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\plugins\sixvpn-control\Ins
 4. 6VPN must be running when you use it. The installer only registers the connector; it does not enable 6VPN protection. To disconnect, run `Uninstall-ClaudeDesktop.ps1` from the same folder and restart Claude Desktop.
 
 The installer backs up an existing Claude config before updating it, keeps other MCP servers, and installs the server under `%LOCALAPPDATA%\SixVPNBlocker\claude-mcp` so it does not depend on where you extracted the ZIP.
+
+## Google Antigravity install (Windows)
+
+1. Download and extract this repository.
+2. Run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\plugins\sixvpn-control\Install-Antigravity.ps1
+```
+
+3. Restart Antigravity. To inspect the connection, open the Agent panel menu (`…`) → **MCP Servers** → **Manage MCP Servers** → **View raw config**.
+4. To disconnect, run `Uninstall-Antigravity.ps1` from the extracted folder and restart Antigravity.
+
+The installer adds only this connector to `%USERPROFILE%\.gemini\config\mcp_config.json`, backs up the previous file, and preserves other MCP servers. It does not start 6VPN or enable protection; enable protection manually in the 6VPN app.
 
 ## ChatGPT Desktop install
 
@@ -52,4 +66,4 @@ The server uses only the Python standard library. Source and tests are under `pl
 
 ## Scope
 
-This is a downloadable Windows local connector, not a hosted Claude or ChatGPT web/mobile connector. Claude Desktop supports local MCP servers and installable desktop extensions; this repository currently provides a manually run Windows installer for the local server configuration.
+This is a downloadable Windows local connector, not a hosted Claude, ChatGPT, or Antigravity web/mobile connector. Installers register the local MCP server only when you run them.

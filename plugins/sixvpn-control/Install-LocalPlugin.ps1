@@ -17,7 +17,7 @@ New-Item -ItemType Directory -Force -Path (Join-Path $pluginRoot '.codex-plugin'
 $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
 $manifest = @{
   name = 'sixvpn-local-control'
-  version = '1.1.0'
+  version = '1.2.0'
   description = 'Read 6VPN status and schedules, preview schedule commands, and apply them after explicit user approval.'
   mcpServers = './.mcp.json'
   skills = './skills/'
